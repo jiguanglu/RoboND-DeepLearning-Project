@@ -71,7 +71,7 @@ def separable_conv2d_batchnorm(input_layer, filters, strides=1):
 #### Bilinear Upsampling
 Bilinear upsampling is a resampling technique that utilizes the weighted average of four nearest known pixels, located diagonally to a given pixel, to estimate a new pixel intensity value.
 
-<img src="./docs/misc/bilinear.png" width="500">
+<img src="./docs/misc/bilinear.png" width="600">
 
 In our case, the corresponding code is:
 
@@ -85,7 +85,7 @@ def bilinear_upsample(input_layer):
 
 Even if you use an encoder and decoder system, some information has been lost, skip connections are used to retain the missing information. The schematic diagram is as follows:
 
-<img src="./docs/misc/skip.png" width="500">
+<img src="./docs/misc/skip.png" width="600">
 
 #### Encoder Block
 
@@ -121,8 +121,16 @@ def decoder_block(small_ip_layer, large_ip_layer, filters):
 
 The trained network is tested in simulation, it works well in the simulation. However, the target person tracked in the simulation has different colors compared with other people, so it will be easier compared to real life.
 
-The network should be able to be used for recognizing other objects, but the parameters maybe not the same. There should be a large batch of images, then using the images and the model to train and tune the parameters, finally the trained model can be used for recognizing other objects.
+The network should be able to be used for recognizing other objects, but the parameters maybe not the same. There should be new dataset containing the new objects (dog, cat, car, etc.), then using the new dataset and the network to train and tune a new model, finally the new model can be used to recognize the new objects.
 
 I uploaded a video to youtube. The link is as follows.
 
 [![https://youtu.be/gE6jEaOTTOU](https://img.youtube.com/vi/gE6jEaOTTOU/0.jpg)](https://www.youtube.com/watch?v=gE6jEaOTTOU)
+
+### Future enhancements
+
+First, this model is trained using default dataset, collect more data from the sim may improve the final score.
+
+Then, maybe making the network deeper yield better results.
+
+Finally, more epochs might improve the performance, but maybe not much.
